@@ -104,6 +104,7 @@ To support modern university structures, V3 migrated from a flat `Subject` table
 5. **Finalize**: The Professor overrides any mistakes and finalizes the draft into permanent records.
 
 ## 🚀 Installation & Setup
+pip install insightface onnxruntime
 
 ### 1. Supabase Setup
 1. Create a new Supabase project.
