@@ -85,3 +85,6 @@ uploads/
 backend/app/services/models/
 backend/models/
 ml/models/
+# AI Agent Files
+.agents/
+backend/.agents/
