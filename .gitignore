@@ -1,0 +1,87 @@
+# ============================================================
+# ATTENDER — .gitignore
+# ============================================================
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ML Models & Training Data (NEVER commit these)
+backend/app/ml/models/
+ml/data/
+trainer/
+images/
+*.npy
+*.pkl
+*.onnx
+*.bin
+
+# Database files (NEVER commit)
+*.db
+*.sqlite3
+web_attendance.db
+
+# Logs
+*.log
+logs/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/dist-ssr/
+frontend/*.local
+
+# macOS
+.DS_Store
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.suo
+.vs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Uploads / Exports
+exports/
+uploads/
+*.csv
+# AI Models
+*.onnx
+*.pt
+*.pth
+*.zip
+
+backend/app/services/models/
+backend/models/
+ml/models/

@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  :root {
+    --bg-primary: #0A0E1A;
+    --bg-surface: #111827;
+    --bg-elevated: #1C2537;
+    --border-subtle: #2D3748;
+    --brand: #6366F1;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+  }
+
+  * {
+    @apply border-border-subtle;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-bg-primary text-slate-100 font-sans;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb {
+    background: #2D3748;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #4B5563; }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+
+  /* Glass Card */
+  .glass-card {
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    @apply rounded-xl;
+  }
+
+  /* Stat card with glow on hover */
+  .stat-card {
+    @apply glass-card p-6 transition-all duration-300 cursor-default;
+  }
+  .stat-card:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.12), 0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+           font-semibold text-sm text-white transition-all duration-200
+           bg-gradient-to-r from-brand to-purple-500
+           hover:shadow-glow-brand hover:scale-[1.02] active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+           font-semibold text-sm text-slate-300 transition-all duration-200
+           border border-border-subtle bg-bg-elevated
+           hover:border-brand hover:text-white hover:bg-bg-elevated
+           active:scale-[0.98];
+  }
+
+  /* Danger Button */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+           font-semibold text-sm text-white transition-all duration-200
+           bg-danger/90 hover:bg-danger hover:shadow-lg active:scale-[0.98];
+  }
+
+  /* Input */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl bg-bg-elevated border border-border-subtle
+           text-slate-100 placeholder-muted text-sm
+           focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/30
+           transition-all duration-200;
+  }
+
+  /* Badge variants */
+  .badge-present  { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-success/15 text-success; }
+  .badge-absent   { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-danger/15 text-danger; }
+  .badge-warning  { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-warning/15 text-warning; }
+  .badge-info     { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-brand/15 text-brand-light; }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 rounded-full bg-bg-elevated overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+  }
+
+  /* Live indicator (animated dot) */
+  .live-dot {
+    @apply relative inline-flex h-2.5 w-2.5;
+  }
+  .live-dot::before {
+    content: '';
+    @apply absolute inline-flex h-full w-full rounded-full bg-success opacity-75 animate-ping;
+  }
+  .live-dot::after {
+    content: '';
+    @apply relative inline-flex h-2.5 w-2.5 rounded-full bg-success;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
+           text-slate-400 hover:text-white hover:bg-bg-elevated
+           transition-all duration-200 cursor-pointer;
+  }
+  .nav-item.active {
+    @apply bg-brand/15 text-brand-light border border-brand/20;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-light to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+  .animate-slide-up { animation: slideUp 0.4s ease-out; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
