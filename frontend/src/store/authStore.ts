@@ -10,6 +10,8 @@ interface AuthState {
     fullName: string;
     role: UserRole;
     email?: string;
+    department?: string;
+    avatarUrl?: string;
   } | null;
   isAuthenticated: boolean;
   isLoading: boolean;

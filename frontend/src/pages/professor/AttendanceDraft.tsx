@@ -19,6 +19,7 @@ interface DraftItem {
   confidence: number;
   status: string;
   face_crop: string | null;
+  source_image_idx?: number;
   candidates: Candidate[];
 }
 
